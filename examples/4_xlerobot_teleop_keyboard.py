@@ -13,7 +13,7 @@ import numpy as np
 import math
 
 from lerobot.robots.xlerobot import XLerobotConfig, XLerobot
-# from lerobot.robots.xlerobot import XLerobotClient, XLerobotClientConfig
+from lerobot.robots.xlerobot import XLerobotClient, XLerobotClientConfig
 # from lerobot.utils.robot_utils import busy_wait
 from lerobot.utils.robot_utils import precise_sleep
 from lerobot.utils.visualization_utils import init_rerun, log_rerun_data
@@ -388,17 +388,17 @@ class SimpleTeleopArm:
 def main():
     # Teleop parameters
     FPS = 50
-    ip = "192.168.1.123"  # This is for zmq connection
+    ip = "168.105.640.8"  # This is for zmq connection
     # ip = "localhost"  # This is for local/wired connection
     robot_name = "my_xlerobot"
 
     # For zmq connection
-    # robot_config = XLerobotClientConfig(remote_ip=ip, id=robot_name)
-    # robot = XLerobotClient(robot_config)    
+    robot_config = XLerobotClientConfig(remote_ip=ip, id=robot_name)
+    robot = XLerobotClient(robot_config)    
 
-    # For local/wired connection
-    robot_config = XLerobotConfig()
-    robot = XLerobot(robot_config)
+    # # For local/wired connection
+    # robot_config = XLerobotConfig()
+    # robot = XLerobot(robot_config)
     
     try:
         robot.connect()
